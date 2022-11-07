@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const PORT = process.env.PORT || 8123;
+const PORT = process.env.PORT || 8000;
 const cors = require("cors");
 
 require("dotenv").config();
@@ -15,8 +15,6 @@ app.use(express.static("public/images"));
 mongoose.connect(
   "mongodb+srv://comingsoon:qweqweqwe@cluster0.uuosu55.mongodb.net/?retryWrites=true&w=majority"
 );
-
-// mongosh "mongodb+srv://cluster0.ed2umd7.mongodb.net/myFirstDatabase" --apiVersion 1 --username comingsoon
 
 app.use("/user", require("./api/user"));
 app.use("/video", require("./api/video"));
