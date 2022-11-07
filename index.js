@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-// const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8000;
 const cors = require("cors");
 
 require("dotenv").config();
@@ -10,8 +10,13 @@ app.use(express.json());
 app.use(express.static("public/videos"));
 app.use(express.static("public/images"));
 
-const { PORT, DB_HOST, DB_PORT, DB_NAME } = process.env;
-mongoose.connect(`mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`);
+// const { PORT, DB_HOST, DB_PORT, DB_NAME } = process.env;
+// mongoose.connect(`mongodb://${DB_HOST}:${DB_PORT}/${DB_NAME}`);
+mongoose.connect(
+  "mongodb+srv://comingsoon:qweqweqwe@cluster0.uuosu55.mongodb.net/?retryWrites=true&w=majority"
+);
+
+// mongosh "mongodb+srv://cluster0.ed2umd7.mongodb.net/myFirstDatabase" --apiVersion 1 --username comingsoon
 
 app.use("/user", require("./api/user"));
 app.use("/video", require("./api/video"));
